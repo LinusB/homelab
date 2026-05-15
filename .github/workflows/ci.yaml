@@ -44,7 +44,7 @@ jobs:
       # Hier installieren wir MkDocs, das Theme UND deine Plugins!
       - name: Install dependencies
         run: |
-          pip install mkdocs-material mkdocs-section-index
+          pip install "mkdocs-material[recommended]" mkdocs-section-index
 
       - name: Build MkDocs site
         run: |

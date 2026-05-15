@@ -1,5 +1,5 @@
 site_name: Linus Bachert
-site_url: https://myhomelab.org
+site_url: https://LinusB.github.io/homelab-gitops/
 theme:
   name: material
   palette:
