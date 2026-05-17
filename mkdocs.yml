@@ -2,15 +2,20 @@ site_name: Linus Bachert
 site_url: https://LinusB.github.io/homelab-gitops/
 theme:
   name: material
+  custom_dir: overrides
   palette:
     # Palette toggle for light mode
     - scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night 
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
@@ -50,17 +55,22 @@ plugins:
   - section-index
   - tags:
       tags_file: 00_About/tags.md
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 extra_css:
   - stylesheets/extra.css
 nav:
   - About: 
-    - 00_About/index.md
+    - index.md
     - Tags: 00_About/tags.md
   - Architecture:
     - 01_architecture/index.md
     - Hardware: 01_architecture/hardware.md
   - Infrastructure:
     - 02_infrastructure/index.md
+    - 02_infrastructure/pve.md
   - Compute:
     - 03_compute/index.md
   - Services:
@@ -73,3 +83,5 @@ extra:
       link: https://www.linkedin.com/in/linus-bachert/
     - icon: fontawesome/brands/github 
       link: https://github.com/LinusB
+
+copyright: "Copyright &copy; 2026 Linus Bachert"
