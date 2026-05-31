@@ -47,7 +47,8 @@ Copyright &copy; 2026 Linus Bachert
 nav = [
   { "About" = [
       "index.md",
-      "about/tags.md" 
+      "about/tags.md", 
+      "about/template.md"
     ]},
   { "Architecture" = [
       "architecture/index.md",
