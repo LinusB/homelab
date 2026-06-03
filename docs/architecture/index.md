@@ -1,6 +1,5 @@
 ---
-tags:
-
+icon: lucide/map
 ---
 
 # Test

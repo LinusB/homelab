@@ -1,5 +1,4 @@
 ---
-tags:
-
+icon: lucide/cpu
 ---
 

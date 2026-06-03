@@ -234,14 +234,14 @@ features = [
     # When sections are enabled, top-level sections are rendered as groups in
     # the sidebar for viewports above 1220px, but remain as-is on mobile.
     # https://zensical.org/docs/setup/navigation/#navigation-sections
-    "navigation.sections",
+    # "navigation.sections",
     "navigation.expand",
     "navigation.path",
 
     # When tabs are enabled, top-level sections are rendered in a menu layer
     # below the header for viewports above 1220px, but remain as-is on mobile.
     # https://zensical.org/docs/setup/navigation/#navigation-tabs
-    #"navigation.tabs",
+    # "navigation.tabs",
 
     # When sticky tabs are enabled, navigation tabs will lock below the header
     # and always remain visible when scrolling down.
@@ -323,8 +323,8 @@ toggle.name = "Switch to light mode"
 [[project.theme.palette]]
 media = "(prefers-color-scheme: light)"
 scheme = "default"
-primary = "deep purple"
-accent = "deep purple"
+primary = "indigo"
+accent = "indigo"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
 
@@ -332,8 +332,8 @@ toggle.name = "Switch to dark mode"
 [[project.theme.palette]]
 media = "(prefers-color-scheme: dark)"
 scheme = "slate"
-primary = "cyan"
-accent = "cyan"
+primary = "indigo"
+accent = "indigo"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to system preference"
 
