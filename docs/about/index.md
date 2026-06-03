@@ -1,3 +1,6 @@
+---
+icon: lucide/info
+---
 
 # Welcome to MkDocs
 
