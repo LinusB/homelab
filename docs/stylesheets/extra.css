@@ -1,62 +1,7 @@
-/* =========================================
-   Light Mode (Default Scheme)
-   ========================================= */
-   [data-md-color-scheme="default"] {
-    /* Hintergrund Layout Docs */
-    --md-default-bg-color: #EEEEEE;
-    
-    /* Header Farbe (Primary) */
-    --md-primary-fg-color: #767F9E;
-    
-    /* Dunklere Nuance für Hover-Effekte / Statusleiste
-    --md-primary-fg-color--dark: #DAA464; */
-    
-    /* Akzentfarbe (für Links, Buttons, Text-Highlights) */
-    --md-accent-fg-color: #767F9E;
-
-    /* --- TEXTKONTRAST OPTIMIERUNG LIGHT MODE --- */
-    --md-typeset-color: #111111;         /* Fast satter schwarzer Fließtext */
-    --md-typeset-heading-color: #000000; /* Knallhartes Schwarz für Überschriften (#, ##) */
-  }
-  
-  /* Textauswahl (Markierung) Light Mode */
-  [data-md-color-scheme="default"] ::selection {
-    background-color: #767F9E; /* Deine Akzentfarbe als Hintergrund */
-    color: #EEEEEE;            /* Weißer Text für starken Kontrast */
-  }
-  [data-md-color-scheme="default"] ::-moz-selection {
-    background-color: #767F9E;
-    color: #EEEEEE;
-  }
-  
-  /* =========================================
-     Dark Mode (Slate Scheme)
-     ========================================= */
-  [data-md-color-scheme="slate"] {
-    /* Hintergrund Layout Docs */
-    --md-default-bg-color: #1A1A1D;
-    
-    /* Hintergrund für Karten, Sidebar, Code-Blöcke (etwas heller für Kontrast) */
-    --md-default-bg-color--light: #393E46;
-    
-    /* Header Farbe (Primary) */
-    --md-primary-fg-color: #767F9E;
-    
-    /* Akzentfarbe (für Links, Buttons, Text-Highlights) */
-    --md-accent-fg-color: #DFD0B8;
-
-    /* --- TEXTKONTRAST OPTIMIERUNG DARK MODE --- */
-    --md-typeset-color: #E0E0E0;         /* Klares, helles Grau für ermüdungsfreies Lesen */
-    --md-typeset-heading-color: #FFFFFF; /* Reines Weiß für alle Überschriften (#, ##) */
-  }
-  
-  /* Textauswahl (Markierung) Dark Mode */
-  [data-md-color-scheme="slate"] ::selection {
-    background-color: #767F9E; /* Deine Akzentfarbe als Hintergrund */
-    color: #222831;            /* Dein dunkler Hintergrund als Textfarbe */
-  }
-  [data-md-color-scheme="slate"] ::-moz-selection {
-    background-color: #767F9E;
-    color: #222831;
-  }
-  
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link > a,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link > label,
+.md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link > a {
+    font-weight: 700 !important;
+}
