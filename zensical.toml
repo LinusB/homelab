@@ -46,7 +46,7 @@ Copyright &copy; 2026 Linus Bachert
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "About" = [
-      "about/index.md",
+      "index.md",
       {"Tags" = "about/tags.md"} 
     ]},
   { "Architecture" = [
@@ -94,8 +94,8 @@ extra_css = ["stylesheets/extra.css"]
 # Section for configuring theme options
 # ----------------------------------------------------------------------------
 [project.theme]
-logo = "logo/logo.png"
-favicon = "logo/logo.png"
+logo = "images/logo.png"
+favicon = "images/logo.png"
 # change this to "classic" to use the traditional Material for MkDocs look.
 #variant = "classic"
 
@@ -347,6 +347,9 @@ name = "Feel free to connect!"
 
 [project.extra]
 generator = false
+
+[project.extra.status]
+new = "Recently added"
 # ----------------------------------------------------------------------------
 # In this section you can configure the Markdown extensions that are used when
 # rendering your documentation. We enable the most useful extensions by default,

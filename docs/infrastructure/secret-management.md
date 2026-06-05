@@ -1,9 +1,11 @@
 ---
+status: new
 tags:
-  - infrastructure
-  - security
-  - networking
-  - gitops
+  - secrets
+  - encryption
+  - ESO
+  - external
+  - git
 ---
 
 ![Draft](https://img.shields.io/badge/Status-Draft-blue?style=for-the-badge)
@@ -15,16 +17,24 @@ tags:
 
 | Attribute | Details |
 | :--- | :--- |
-| **Date** | YYYY-MM-DD |
+| **Date** | 2026-06-05 |
 | **Author** | Linus Bachert |
 
 ---
 
 ## Context & Problem Statement
 
-* **Problem:** [Clearly state the technical challenge, pain point, or security vulnerability that needs to be addressed.]
-* **Goals:** [Outline the desired outcomes, architectural objectives, or target state.]
-* **Constraints:** [Identify technical limitations, hardware restrictions (e.g., resource budget), resource or time constraints.]
+**Problem:**<br>
+A fundamental conflict in any professional GitOps architecture is the requirement to declaratively store system states in version control without exposing sensitive credentials in plain text. A robust solution must secure the entire lifecycle. It needs to protect secrets within the Git repository, ensure secure handling during active server operations, and guarantee that secrets are never accidentally exposed via persistent storage snapshots or system backups. Furthermore, the architecture must solve the "Secret Zero" paradox - securely bootstrapping the secret manager itself.
+
+**Goals:**<br>
+The primary objective is to implement a unified, Zero-Trust secret management solution. This concept must integrate seamlessly across different architectural layers, specifically serving both the Proxmox VE hypervisor infrastructure and the Kubernetes cluster environment which are used in this homelab.
+
+!!! question "Constraints"
+    * **In-Memory Runtime Only:** To comply with modern security best practices and prevent leaks via ZFS block-level backups, secrets must be dynamically injected and exist strictly in RAM during runtime.
+    * **Unified Ecosystem:** The architecture must provide a single, cohesive tooling standard that fits both environments (PVE and Kubernetes) to reduce operational overhead.
+    * **Public-Repo Readiness:** The encryption mechanisms must be cryptographically secure enough to safely store the GitOps repository publicly without any risk of exposure.
+    * **Local Bootstrap Capability:** The core infrastructure must remain recoverable from a cold start (Disaster Recovery).
 
 ---
 

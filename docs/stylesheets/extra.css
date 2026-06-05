@@ -5,3 +5,31 @@
 .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link > a {
     font-weight: 700 !important;
 }
+
+/* Custom Background Overlay für Zensical Docs */
+body::after {
+  content: "";
+  /* Pfad entsprechend deiner Ordnerstruktur anpassen */
+  background-image: url('../images/bg-drg.png'); 
+  background-repeat: no-repeat;
+  
+  /* Drache unten zentrieren */
+  background-position: bottom center; 
+  background-size: 100% auto; /* Passt sich dynamisch der Fensterbreite an */
+  
+  /* Fest am unteren Bildschirmrand fixieren */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  
+  /* WICHTIG: Verhindert, dass das Bild Links oder Text blockiert */
+  pointer-events: none; 
+  
+  /* Legt das Bild über den Hintergrund, aber unter Modal-Fenster/Popups */
+  z-index: 10; 
+  
+  /* Optional: Deckkraft anpassen, falls es noch einen Tick dezenter sein soll */
+  opacity: 0.4; 
+}
