@@ -1,3 +1,7 @@
+---
+status: deprecated
+---
+
 # Proxmox VE: Converged Hosting & System Architecture
 
 This document outlines the technical feasibility, architectural design, and operational implementation of our hyperconverged Proxmox VE infrastructure. It specifically addresses the consolidation of persistent storage services (Nextcloud, Immich) alongside transient, resource-intensive workloads (SAP ASE, Kali Linux) on a single host with 32 GB of RAM.
