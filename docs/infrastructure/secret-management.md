@@ -24,23 +24,28 @@ tags:
 
 ## Context & Problem Statement
 
-**Problem:**<br>
-A fundamental conflict in any professional GitOps architecture is the requirement to declaratively store system states in version control without exposing sensitive credentials in plain text. A robust solution must secure the entire lifecycle. It needs to protect secrets within the Git repository, ensure secure handling during active server operations, and guarantee that secrets are never accidentally exposed via persistent storage snapshots or system backups. Furthermore, the architecture must solve the "Secret Zero" paradox - securely bootstrapping the secret manager itself.
+**`Problem:`**
+:   A fundamental conflict in any professional GitOps architecture is the requirement to    declaratively store system states in version control without exposing sensitive credentials in plain text. A robust solution must secure the entire lifecycle. It needs to protect secrets within the Git repository, ensure secure handling during active server operations, and guarantee that secrets are never accidentally exposed via persistent storage snapshots or system backups. Furthermore, the architecture must solve the "Secret Zero" paradox - securely bootstrapping the secret manager itself.
 
-**Goals:**<br>
-The primary objective is to implement a unified, Zero-Trust secret management solution. This concept must integrate seamlessly across different architectural layers, specifically serving both the Proxmox VE hypervisor infrastructure and the Kubernetes cluster environment which are used in this homelab.
+**`Goals:`**
+:   - Implement a unified, Zero-Trust secret management solution. 
+    - The concept must integrate seamlessly across different architectural layers, specifically serving both the Proxmox VE hypervisor infrastructure and the Kubernetes cluster environment which are used in this homelab.
 
-!!! question "Constraints"
-    * **In-Memory Runtime Only:** To comply with modern security best practices and prevent leaks via ZFS block-level backups, secrets must be dynamically injected and exist strictly in RAM during runtime.
-    * **Unified Ecosystem:** The architecture must provide a single, cohesive tooling standard that fits both environments (PVE and Kubernetes) to reduce operational overhead.
-    * **Public-Repo Readiness:** The encryption mechanisms must be cryptographically secure enough to safely store the GitOps repository publicly without any risk of exposure.
-    * **Local Bootstrap Capability:** The core infrastructure must remain recoverable from a cold start (Disaster Recovery).
+**`Constraints`**
+:    - **In-Memory Runtime Only:** To comply with modern security best practices and prevent leaks via ZFS block-level backups, secrets must be dynamically injected and exist strictly in RAM during runtime.
+:    - **Unified Ecosystem:** The architecture must provide a single, cohesive tooling standard that fits both environments (PVE and Kubernetes) to reduce operational overhead.
+:    - **Public-Repo Readiness:** The encryption mechanisms must be cryptographically secure enough to safely store the GitOps repository publicly without any risk of exposure.
+:    - **Local Bootstrap Capability:** The core infrastructure must remain recoverable from a cold start (Disaster Recovery).
 
 ---
 
 ## Decision
 
-* **Evaluated Options:**
+**Evaluated Options:**
+<div class="grid cards" markdown>
+- :fontawesome-brands-square-git: __Git-Encrypted__
+- :fontawesome-brands-keycdn: __Exteral Secret Management (ESO)__
+</div>
     * **Option 1:** [Name of Tool/Approach 1] — [Brief description]
     * **Option 2:** [Name of Tool/Approach 2] — [Brief description]
     * **Option 3:** [Name of Tool/Approach 3] — [Brief description]
