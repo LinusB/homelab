@@ -43,12 +43,34 @@ tags:
 
 **Evaluated Options:**
 <div class="grid cards" markdown>
-- :fontawesome-brands-square-git: __Git-Encrypted__
-- :fontawesome-brands-keycdn: __Exteral Secret Management (ESO)__
+
+-   :fontawesome-brands-square-git:{ .lg .middle } __Git-Encrypted__
+
+    ---
+
+    #### SOPS (Secret OPerationS)
+    **Advantages**
+
+    **Disadvantages**
+
+    ---
+
+    #### Bitnami Sealed Secrets
+    **Advantages**
+    * [x] lorem ipsum
+    * [x] lorem ipsum
+    * [x] lorem ipsum
+    **Disadvantages**
+
+-   :fontawesome-brands-keycdn:{ .lg .middle } __Exteral Secret Management (ESO)__
+
+    ---
+
+    Focus on your content and generate a responsive and searchable static site
+
+    [:octicons-arrow-right-24: Reference](#)
 </div>
-    * **Option 1:** [Name of Tool/Approach 1] — [Brief description]
-    * **Option 2:** [Name of Tool/Approach 2] — [Brief description]
-    * **Option 3:** [Name of Tool/Approach 3] — [Brief description]
+
 * **Chosen Decision:** [State the selected solution or hybrid approach clearly.]
 * **Causal Chain & Rationale (Why?):**
     * *Risk:* [Identify specific risks of rejected options, e.g., Cluster loss leads to permanent lockout / Outage drops local bootstrap capability.]
