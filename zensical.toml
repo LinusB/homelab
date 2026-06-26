@@ -71,7 +71,7 @@ nav = [
   ] },
   { "ADRs" = [
     "ADR/index.md",
-    { "Physical Infrastructure" = "ADR/001-physical-infrastructure.md" },
+    { "ADR: 001 - IT Procurement" = "ADR/001-IT-procurement.md" },
   ] },
   { "Security Concept" = [
     "security/index.md",
@@ -87,6 +87,7 @@ nav = [
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
 extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/custom.js"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
