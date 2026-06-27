@@ -15,7 +15,7 @@ tags:
 
 | Attribute  | Details       |
 | :--------- | :------------ |
-| **Date** | 2026-06-26    |
+| **Date** | 2026-06-27    |
 | **Author** | Linus Bachert |
 
 ---
@@ -27,7 +27,7 @@ tags:
 
 **`Goals:`**
 :   - Design and build an "Enterprise Homelab" in a compact 10-inch form factor.
-    - Serve as a tangible, high-quality portfolio piece demonstrating senior-level capabilities in GitOps, Cloud Security Posture Management, and Governance, Risk & Compliance (GRC).
+    - Serve as a tangible, high-quality portfolio piece demonstrating high-level capabilities in GitOps, Cloud Security Posture Management, and Governance, Risk & Compliance (GRC).
     - Reflect principles of Zero-Trust and strict physical/logical separation (Underlay vs. Overlay) while maintaining a clean, highly professional aesthetic.
 
 **`Constraints:`**
@@ -50,29 +50,29 @@ tags:
 
     | Image | Item Name | Specs / Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/hp-elitedesk-805-g6-mini.avif" width="60" alt="HP EliteDesk"> | **HP EliteDesk 805 G6 Mini** | Ryzen 5 Pro 4650G, 16GB RAM, 256GB SSD | €299.99 | [Link](https://www.ram-koenig.de/hp-elitedesk-805-g6-mini-pc-ryzen5-pro-4650g-3e4b8us-nowifi/3089) |
-    | <img src="001/images/hp-elitedesk-805-g6-mini.avif" width="60" alt="HP EliteDesk"> | **HP EliteDesk 800 G6 Mini** | Intel Core i5-10500T, 32GB RAM, No SSD | €411.90 | [Link](https://greendot.it/HP-EliteDesk-800-G6-mini) |
-    | <img src="001/images/Raspi-5.png" width="60" alt="Raspberry Pi 5"> | **Raspberry Pi 5 (8GB)** | Broadcom BCM2712, 8GB RAM | €94.90 | [Link](https://www.welectron.com/Raspberry-Pi-5-8-GB-RAM) |
-    | <img src="001/images/Raspi-5.png" width="60" alt="Raspberry Pi 5"> | **Raspberry Pi 5 (4GB) (Qty: 2)** | Broadcom BCM2712, 4GB RAM | 2x €69.90 | [Link](https://www.welectron.com/Raspberry-Pi-5-4-GB-RAM) |
+    | <img src="images/hp-elitedesk-805-g6-mini.avif" width="60" alt="HP EliteDesk"> | **HP EliteDesk 805 G6 Mini** | Ryzen 5 Pro 4650G, 16GB RAM, 256GB SSD | €299.99 | [Link](https://www.ram-koenig.de/hp-elitedesk-805-g6-mini-pc-ryzen5-pro-4650g-3e4b8us-nowifi/3089){: target="_blank" } |
+    | <img src="images/hp-elitedesk-805-g6-mini.avif" width="60" alt="HP EliteDesk"> | **HP EliteDesk 800 G6 Mini** | Intel Core i5-10500T, 32GB RAM, No SSD | €411.90 | [Link](https://greendot.it/HP-EliteDesk-800-G6-mini){: target="_blank" } |
+    | <img src="images/Raspi-5.png" width="60" alt="Raspberry Pi 5"> | **Raspberry Pi 5 (8GB)** | Broadcom BCM2712, 8GB RAM | €94.90 | [Link](https://www.welectron.com/Raspberry-Pi-5-8-GB-RAM){: target="_blank" } |
+    | <img src="images/Raspi-5.png" width="60" alt="Raspberry Pi 5"> | **Raspberry Pi 5 (4GB) (Qty: 2)** | Broadcom BCM2712, 4GB RAM | 2x €69.90 | [Link](https://www.welectron.com/Raspberry-Pi-5-4-GB-RAM){: target="_blank" } |
 
     **Decision Rationale - Compute Tier**
 
-    * **Control Plane Homogeneity:** The three Raspberry Pi 5 nodes form a dedicated, physical, bare-metal Control Plane running Talos Linux. This guarantees a true etcd quorum (3 separate failure domains) and avoids x86/ARM architecture symmetry issues during raft state synchronization.
-    * **Worker Nodes (x86_64 Compute):** The HP EliteDesk nodes function strictly as the Proxmox VE virtualization underlay, hosting powerful x86_64 worker VMs. This separates management infrastructure from raw compute workloads.
-    * **Multi-Arch Environment:** This deliberate multi-architecture approach (ARM64 Control Plane + x86_64 Worker Plane) provides an enterprise-grade target environment to test multi-arch OCI container pipelines via GitOps.
+    * **Control Plane Homogeneity:** The three Raspberry Pi 5 nodes will form a dedicated, physical, bare-metal Control Plane running Talos Linux. This guarantees a true etcd quorum (3 separate failure domains) and avoids x86/ARM architecture symmetry issues during raft state synchronization.
+    * **Worker Nodes (x86_64 Compute):** The HP EliteDesk nodes will function strictly as the Proxmox VE virtualization underlay, hosting powerful x86_64 worker VMs. This separates management infrastructure from raw compute workloads.
+    * **Multi-Arch Environment:** This deliberate multi-architecture approach (ARM64 Control Plane + x86_64 Worker Plane) will provide an enterprise-grade target environment to test multi-arch OCI container pipelines via GitOps.
 
 -   :lucide-hard-drive:{ .lg .middle } __Storage & Persistence (Data Plane)__
 
     ---
 
-    | Item Name | Manufacturer | Price | Product Link |
-    | :--- | :--- | :--- | :--- |
-    | <img src="001/images/SN7100.png" width="60" alt="SN7100"> | **2TB NVMe SSD (SN7100) (Qty: 2)** | WD Black | 2x €149.90 | [Link](https://www.cyberport.de/pc-und-zubehoer/festplatten-ssds/ssd-solid-state-disk/wd-black/pdp/3318-06u/wd-black-sn7100-nvme-ssd-2-tb-m-2-2280-pcie-4-0.html) |
-    | <img src="001/images/Seagate-IronWolf.png" width="60" alt="Seagate-IronWolf"> | **1TB NAS SATA SSD** | Seagate IronWolf 125 | ~€89.00 | [Link](https://www.amazon.de/dp/B08H4V2F6K) |
-    | <img src="001/images/Seagate-Video.png" width="60" alt="Seagate Video"> | **2TB HDD (Pipeline 5900rpm)** | Seagate Video | €38.99 | [Link](https://www.amazon.de/dp/B008B0RQ1C) |
-    | <img src="001/images/Lexar.png.webp" width="60" alt="Lexar"> | **128GB MicroSD V30 (Qty: 2)** | Lexar | 2x €23.99 | [Link](https://www.amazon.de/dp/B08XZ7FXGR?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1) |
-    | <img src="001/images/Sandisk-Extreme.webp" width="60" alt="Sandisk Extreme"> | **128GB MicroSD UHS-I** | SanDisk Extreme | €15.99 | [Link](https://www.amazon.de/dp/B09X7BK27V?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1) |
-    | <img src="001/images/Fideco.webp" width="60" alt="Fideco"> | **Dual SATA Docking Station (USB 3.0)** | FIDECO | €35.19 | [Link](https://www.amazon.de/dp/B07D8S7RN7) |
+    | Image | Item Name | Manufacturer | Price | Product Link |
+    | :--- | :--- | :--- | :--- | :--- |
+    | <img src="images/SN7100.png" width="60" alt="SN7100"> | **2TB NVMe SSD (SN7100) (Qty: 2)** | WD Black | 2x €149.90 | [Link](https://www.cyberport.de/pc-und-zubehoer/festplatten-ssds/ssd-solid-state-disk/wd-black/pdp/3318-06u/wd-black-sn7100-nvme-ssd-2-tb-m-2-2280-pcie-4-0.html){: target="_blank" } |
+    | <img src="images/Seagate-IronWolf.png" width="60" alt="Seagate-IronWolf"> | **1TB NAS SATA SSD** | Seagate IronWolf 125 | ~€89.00 | [Link](https://www.amazon.de/dp/B08H4V2F6K){: target="_blank" } |
+    | <img src="images/Seagate-Video.png" width="60" alt="Seagate Video"> | **2TB HDD (Pipeline 5900rpm)** | Seagate Video | €38.99 | [Link](https://www.amazon.de/dp/B008B0RQ1C){: target="_blank" } |
+    | <img src="images/Lexar.png.webp" width="60" alt="Lexar"> | **128GB MicroSD V30 (Qty: 2)** | Lexar | 2x €23.99 | [Link](https://www.amazon.de/dp/B08XZ7FXGR?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1){: target="_blank" } |
+    | <img src="images/Sandisk-Extreme.webp" width="60" alt="Sandisk Extreme"> | **128GB MicroSD UHS-I** | SanDisk Extreme | €15.99 | [Link](https://www.amazon.de/dp/B09X7BK27V?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1){: target="_blank" } |
+    | <img src="images/Fideco.webp" width="60" alt="Fideco"> | **Dual SATA Docking Station (USB 3.0)** | FIDECO | €35.19 | [Link](https://www.amazon.de/dp/B07D8S7RN7){: target="_blank" } |
 
     **Decision Rationale - Storage Tiering**
 
@@ -85,12 +85,12 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/BerylAX.png" width="60" alt="Beryl AX"> | **Beryl AX (GL-MT3000)** | GL.iNet | €62.39 | [Link](https://www.gl-inet.com/en-de/products/gl-mt3000) |
-    | <img src="001/images/Netgear-GS308EP.avif" width="60" alt="Netgear-GS308EP"> | **8-Port Gigabit PoE+ Switch (62W)** | Netgear GS308EP | €74.99 | [Link](https://www.amazon.de/dp/B08LZJ2H9S) |
+    | <img src="images/BerylAX.png" width="60" alt="Beryl AX"> | **Beryl AX (GL-MT3000)** | GL.iNet | €62.39 | [Link](https://www.gl-inet.com/en-de/products/gl-mt3000){: target="_blank" } |
+    | <img src="images/Netgear-GS308EP.avif" width="60" alt="Netgear-GS308EP"> | **8-Port Gigabit PoE+ Switch (62W)** | Netgear GS308EP | €74.99 | [Link](https://www.amazon.de/dp/B08LZJ2H9S){: target="_blank" } |
 
     **Decision Rationale - Network Fabric**
 
-    * **Logical Boundary:** The Beryl AX functions as a strict perimeter gateway, isolating the entire lab via a NAT boundary from external residential networks, while providing secure upstream ingress via WireGuard/OpenVPN.
+    * **Logical Boundary:** The Beryl AX on OpenWrt functions as a strict perimeter gateway, isolating the entire lab via a NAT boundary from external residential networks, while providing secure upstream ingress via WireGuard/OpenVPN. Furthermore, it is highly suitable for IaC.
     * **Layer 2 Segmentation:** The Netgear GS308EP switch serves as the hardware foundation for the Zero-Trust network layer. It enforces strict 802.1Q VLAN trunking and port isolation to cleanly segment the Management Underlay (VLAN 10), Compute Overlay (VLAN 20), and IoT Edge devices (VLAN 30).
 
 </div>
@@ -105,8 +105,8 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/IT-Rack.jpg" width="60" alt="IT-Rack"> | **10-Inch Rack, 9U, 200mm Depth** | Tecmojo | €89.90 | [Link](https://www.amazon.de/dp/B0GDNP6WX6) |
-    | <img src="001/images/d-c-fix.jpg" width="60" alt="d-c-fix"> | **Adhesive Vinyl Foil Black (45cm x 2m)** | d-c-fix | €5.95 | [Link](https://www.amazon.de/dp/B005FPTB3W) |
+    | <img src="images/IT-Rack.jpg" width="60" alt="IT-Rack"> | **10-Inch Rack, 9U, 200mm Depth** | Tecmojo | €89.90 | [Link](https://www.amazon.de/dp/B0GDNP6WX6){: target="_blank" } |
+    | <img src="images/d-c-fix.jpg" width="60" alt="d-c-fix"> | **Adhesive Vinyl Foil Black (45cm x 2m)** | d-c-fix | €5.95 | [Link](https://www.amazon.de/dp/B005FPTB3W){: target="_blank" } |
 
     **Decision Rationale - Form Factor & Stealth Modification**
 
@@ -119,9 +119,9 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/Patchpanel.jpg" width="60" alt="Patch Panel"> | **12-Port Cat6 Patch Panel – 0.5U** | GeeekPi | €25.99 | [Link](https://www.amazon.de/dp/B0D5Q6CJ1J) |
-    | <img src="001/images/white-cat6a.jpg" width="60" alt="White Cat6a"> | **White Cat6a Patch Cables (Front, Qty: 10)** | Ercielook | 2x €5.99 | [Link](https://www.amazon.de/dp/B0F8BL9MW2) |
-    | <img src="001/images/black-cat6a.jpg" width="60" alt="Black Cat6a"> | **Black Cat6a Patch Cables (Rear, Qty: 12)** | Ercielook | €15.46 | [Link](https://www.amazon.de/dp/B0DTY32BZN) |
+    | <img src="images/Patchpanel.jpg" width="60" alt="Patch Panel"> | **12-Port Cat6 Patch Panel – 0.5U** | GeeekPi | €25.99 | [Link](https://www.amazon.de/dp/B0D5Q6CJ1J){: target="_blank" } |
+    | <img src="images/white-cat6a.jpg" width="60" alt="White Cat6a"> | **White Cat6a Patch Cables (Front, Qty: 10)** | Ercielook | 2x €5.99 | [Link](https://www.amazon.de/dp/B0F8BL9MW2){: target="_blank" } |
+    | <img src="images/black-cat6a.jpg" width="60" alt="Black Cat6a"> | **Black Cat6a Patch Cables (Rear, Qty: 12)** | Ercielook | €15.46 | [Link](https://www.amazon.de/dp/B0DTY32BZN){: target="_blank" } |
 
     **Decision Rationale - Layer 1 Architecture**
 
@@ -135,8 +135,8 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/Cable-Ties1.jpg" width="60" alt="Cable Tie"> | **Hook and Loop Cable Tie Roll, 10mm** | Gemi | €5.94 | [Link](https://www.amazon.de/dp/B0FH4S1KBX) |
-    | <img src="001/images/Cable-Ties2.jpg" width="60" alt="Cable Tie"> | **Cable Ties Black (50 Pcs)** | Oksdown | €3.99 | [Link](https://www.amazon.de/dp/B092T8N7T3) |
+    | <img src="images/Cable-Ties1.jpg" width="60" alt="Cable Tie"> | **Hook and Loop Cable Tie Roll, 10mm** | Gemi | €5.94 | [Link](https://www.amazon.de/dp/B0FH4S1KBX){: target="_blank" } |
+    | <img src="images/Cable-Ties2.jpg" width="60" alt="Cable Tie"> | **Cable Ties Black (50 Pcs)** | Oksdown | €3.99 | [Link](https://www.amazon.de/dp/B092T8N7T3){: target="_blank" } |
 
     **Decision Rationale - Slot-Threading Securement**
 
@@ -150,11 +150,11 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/DIGITUS-PDU.jpg" width="60" alt="DIGITUS PDU"> | **4-Way Power Strip (PDU) 1U** | DIGITUS | €15.29 | [Link](https://www.amazon.de/dp/B09M6W23ZM) |
-    | <img src="001/images/3-Pin-C5.jpg" width="60" alt="Y-Cable"> | **Power Cable 3-Pin C5 Y-Cable** | ACT | €16.71 | [Link](https://www.amazon.de/dp/B07SJ6RS4X) |
-    | <img src="001/images/100W-USB-Charger.jpg" width="60" alt="Charger"> | **100W USB-C GaN Charger (4x Ports)** | UGREEN | €35.98 | [Link](https://www.amazon.de/dp/B0CYT1VVMV) |
-    | <img src="001/images/12V-3A-Power-Supply.jpg" width="60" alt="Power Supply"> | **12V 3A Power Supply (36W)** | TOBWOLF | €10.19 | [Link](https://www.amazon.de/dp/B07N197JH8) |
-    | <img src="001/images/100W-USB-C-Cable.jpg" width="60" alt="USB-C Cable"> | **100W USB-C Cable (Qty: 4, 1M)** | UGREEN | 2x €10.44 | [Link](https://www.amazon.de/dp/B09N94MZG9) |
+    | <img src="images/DIGITUS-PDU.jpg" width="60" alt="DIGITUS PDU"> | **4-Way Power Strip (PDU) 1U** | DIGITUS | €15.29 | [Link](https://www.amazon.de/dp/B09M6W23ZM){: target="_blank" } |
+    | <img src="images/3-Pin-C5.jpg" width="60" alt="Y-Cable"> | **Power Cable 3-Pin C5 Y-Cable** | ACT | €16.71 | [Link](https://www.amazon.de/dp/B07SJ6RS4X){: target="_blank" } |
+    | <img src="images/100W-USB-Charger.jpg" width="60" alt="Charger"> | **100W USB-C GaN Charger (4x Ports)** | UGREEN | €35.98 | [Link](https://www.amazon.de/dp/B0CYT1VVMV){: target="_blank" } |
+    | <img src="images/12V-3A-Power-Supply.jpg" width="60" alt="Power Supply"> | **12V 3A Power Supply (36W)** | TOBWOLF | €10.19 | [Link](https://www.amazon.de/dp/B07N197JH8){: target="_blank" } |
+    | <img src="images/100W-USB-C-Cable.jpg" width="60" alt="USB-C Cable"> | **100W USB-C Cable (Qty: 4, 1M)** | UGREEN | 2x €10.44 | [Link](https://www.amazon.de/dp/B09N94MZG9){: target="_blank" } |
 
     **Decision Rationale - Power Consolidation & Software Overrule**
 
@@ -168,29 +168,29 @@ tags:
 
     | Image | Item Name | Manufacturer | Price | Product Link |
     | :--- | :--- | :--- | :--- | :--- |
-    | <img src="001/images/heatsink.png" width="60" alt="Heatsink"> | **Copper M.2 Heatsink (Qty: 2)** | JEYI | €5.10 | [Link](https://de.aliexpress.com/item/1005005713746988.html) |
-    | <img src="001/images/ZB-Temperature.png" width="60" alt="ZB Temperature"> | **Zigbee 3.0 Temp & Humidity Sensor** | Generic | €2.89 | [Link](https://de.aliexpress.com/item/1005011992980900.html) |
-    | <img src="001/images/ZB-Dongle.png" width="60" alt="ZB Dongle"> | **ZB Dongle-E USB Dongle** | SONOFF | €15.79 | [Link](https://de.aliexpress.com/item/1005010075573565.html) |
+    | <img src="images/heatsink.png" width="60" alt="Heatsink"> | **Copper M.2 Heatsink (Qty: 2)** | JEYI | €5.10 | [Link](https://de.aliexpress.com/item/1005005713746988.html){: target="_blank" } |
+    | <img src="images/ZB-Temperature.png" width="60" alt="ZB Temperature"> | **Zigbee 3.0 Temp & Humidity Sensor** | Generic | €2.89 | [Link](https://de.aliexpress.com/item/1005011992980900.html){: target="_blank" } |
+    | <img src="images/ZB-Dongle.png" width="60" alt="ZB Dongle"> | **ZB Dongle-E USB Dongle** | SONOFF | €15.79 | [Link](https://de.aliexpress.com/item/1005010075573565.html){: target="_blank" } |
 
     **Decision Rationale - Thermal Air-Gap Strategy**
 
-    * **Convection Management:** High-density setups suffer from passive heat compounding. The transformation bricks of the external power supplies are laid out on the bottom shelf using custom-rolled hook-and-loop spacers. 
-    * These spacers guarantee a structural **1.5 cm vertical air-gap** between each brick. This preserves the internal chimney effect, allowing cool air to pass through the lower ventilation slots and safely carry radiant heat away from the nodes above.
+    * **Convection Management:** High-density setups suffer from passive heat compounding. The transformation bricks of the external power supplies are laid out on the bottom shelf using custom-rolled hook-and-loop spacers. These spacers guarantee a structural **1.5 cm vertical air-gap** between each brick. This preserves the internal chimney effect, allowing cool air to pass through the lower ventilation slots and safely carry radiant heat away from the nodes above.
     * **Environmental Metrics:** The SONOFF Zigbee coordinator bridges ambient internal temperatures into the management plane for proactive threshold alerting.
+    * **Copper M.2 Heatsink:** Used for passive thermal management of the two NVMe SSDs built into the 32GB HP EliteDesk node, effectively optimizing heat dissipation and preventing thermal throttling under sustained workloads.
 
 -   :lucide-server:{ .lg .middle } __Mounting & Structural Integrity__
 
     ---
 
-    | Item Name | Manufacturer | Price | Product Link |
-    | :--- | :--- | :--- | :--- |
-    | <img src="001/images/Rackmount-Netgear.jpg" width="60" alt="Rackmount Netgear"> | **Rackmount - Netgear PoE Switch** | N/A (3D Print) | €14.99 | [Link](https://www.amazon.de/dp/B0GMCTB3XJ) |
-    | <img src="001/images/Rackmount-EliteDesk.jpg" width="60" alt="Rackmount EliteDesk"> | **Rackmount - HP EliteDesk (Qty: 2)** | N/A (3D Print) | 2x €15.99 | [Link](https://www.amazon.de/dp/B0GCTBXNWX) |
-    | <img src="001/images/Pi-Case.jpg" width="60" alt="Raspberry Pi 5 Case"> | **Raspberry Pi 5 Case + 27W PSU** | Miuzei | €19.99 | [Link](https://www.amazon.de/dp/B0CRYQFDQP) |
+    | Image | Item Name | Manufacturer | Price | Product Link |
+    | :--- | :--- | :--- | :--- | :--- |
+    | <img src="images/Rackmount-Netgear.jpg" width="60" alt="Rackmount Netgear"> | **Rackmount - Netgear PoE Switch** | N/A (3D Print) | €14.99 | [Link](https://www.amazon.de/dp/B0GMCTB3XJ){: target="_blank" } |
+    | <img src="images/Rackmount-EliteDesk.jpg" width="60" alt="Rackmount EliteDesk"> | **Rackmount - HP EliteDesk (Qty: 2)** | N/A (3D Print) | 2x €15.99 | [Link](https://www.amazon.de/dp/B0GCTBXNWX){: target="_blank" } |
+    | <img src="images/Pi-Case.jpg" width="60" alt="Raspberry Pi 5 Case"> | **Raspberry Pi 5 Case + 27W PSU** | Miuzei | €19.99 | [Link](https://www.amazon.de/dp/B0CRYQFDQP){: target="_blank" } |
 
     **Decision Rationale - Symmetry, Stability & Resource Lifecycle**
 
-    * **Precision 3D-Printed Mounts:** Due to the absence of standardized 10-inch enterprise brackets for micro-form-factor nodes, custom mounts are mandatory. They ensure a flush, symmetrical fit across the 8U space. This exact horizontal alignment is the mechanical prerequisite for the tension-free "waterfall" cable routing at the front panel. The rough PEI build-plate texture seamlessly imitates powder-coated industrial steel, preserving the enterprise aesthetic.
+    * **Precision 3D-Printed Mounts:** Due to the absence of standardized 10-inch enterprise brackets for micro-form-factor nodes, custom mounts are mandatory. They ensure a flush, symmetrical fit across the 9U space. This exact horizontal alignment is the mechanical prerequisite for the tension-free "waterfall" cable routing at the front panel. The rough PEI build-plate texture seamlessly imitates powder-coated industrial steel, preserving the enterprise aesthetic.
     * **Pi Case (Resource Lifecycle Management):** Salvaged from existing older stock inventory. Reusing the heavy-duty aluminum shell provides massive passive cooling thermal mass for the Control Plane nodes without requiring new budget allocation. *(Note: The included 27W PSU is retained purely as an out-of-band backup/testing unit, as primary power is consolidated via the UGREEN GaN architecture to save rack space).*
 
 </div>
