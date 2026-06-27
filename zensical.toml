@@ -71,10 +71,13 @@ nav = [
   ] },
   { "ADRs" = [
     "ADR/index.md",
-    { "ADR: 001 - IT Procurement" = "ADR/001-IT-procurement.md" },
+    { "ADR: 001 - IT Procurement" = "ADR/adr-it-procurement/adr-it-procurement.md" },
   ] },
   { "Security Concept" = [
     "security/index.md",
+  ] },
+  { "Risk Acceptances" = [
+    "risk-acceptances/index.md",
   ] },
 ]
 
@@ -400,3 +403,4 @@ combine_header_slug = true
 [project.markdown_extensions.pymdownx.tasklist]
 custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
+
