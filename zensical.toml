@@ -50,12 +50,13 @@ nav = [
   ] },
   { "Architecture" = [
     "architecture/index.md",
-    { "Hardware" = "architecture/hardware.md" },
+    # { "Hardware" = "architecture/hardware.md" },
   ] },
   { "Infrastructure" = [
     "infrastructure/index.md",
-    { "Proxmox VE" = "infrastructure/pve.md" },
-    { "Secrets Management" = "infrastructure/secrets-management.md" },
+    { "Layer 1: Hardware Build" = "infrastructure/layer-1/hardware-build.md" },
+    # { "Proxmox VE" = "infrastructure/pve.md" },
+    # { "Secrets Management" = "infrastructure/secrets-management.md" },
   ] },
   { "Compute" = [
     "compute/index.md",
