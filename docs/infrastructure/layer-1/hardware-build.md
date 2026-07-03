@@ -16,6 +16,9 @@ tags:
 ![Enterprise Homelab - Production Ready](images/homelab-overview.png){ loading=lazy }
 *Fig 1: The fully integrated 9U compute and network infrastructure operating under active load.*
 
+![Front Panel Topology](images/L2-Patchpanel.png){ loading=lazy }
+*Fig 2: Physical Front Panel Topology and Layer 1 Segmentation.*
+
 ---
 
 ## 1. Procurement & Component Audit
@@ -118,7 +121,7 @@ During the initial seating of the components, active power lines were integrated
 The data plane requires stable, vibration-free mounting. The FIDECO dual docking station was secured at the bottom rear of the rack, housing the Seagate IronWolf NAS SSD and the Seagate 2TB HDD (Pipeline 5900rpm).
 
 ![Storage Plane Integration](images/fideco-cable-mgmt.png){ loading=lazy }
-*Fig 2: Seagate IronWolf securely seated in the FIDECO dock, positioned below the two mounted Raspberry Pi.*
+*Fig 3: Seagate IronWolf securely seated in the FIDECO dock, positioned below the two mounted Raspberry Pi.*
 
 ---
 
@@ -133,7 +136,7 @@ High-density compute environments suffer from passive heat compounding. When mul
 * Cool air is drawn from the bottom chassis slits, passes seamlessly through these artificial gaps, and carries radiant heat upward and away from the critical infrastructure.
 
 ![Thermal Spacers on Power Bricks](images/thermal-spaces.jpeg){ loading=lazy }
-*Fig 3: The power transformation layer with structural air-gaps implemented via custom Velcro spacers.*
+*Fig 4: The power transformation layer with structural air-gaps implemented via custom Velcro spacers.*
 
 ---
 
@@ -167,11 +170,11 @@ The front Cat6a data lines follow a strict 1-to-1 descending topology from the p
 ### Rear Panel Cable Management
 At the rear of the rack, a unified and practical cable management approach is applied to organize both power and data cables without obstructing airflow.
 
-* :lucide-corner-down-right: **Internal Switch Uplinks:** Service loops are cleanly tucked directly under the roof chassis to prevent tension on the RJ45 interfaces. (See *Fig 4*).
+* :lucide-corner-down-right: **Internal Switch Uplinks:** Service loops are cleanly tucked directly under the roof chassis to prevent tension on the RJ45 interfaces. (See *Fig 5*).
 * :lucide-paperclip: **Unified Fastening (Velcro):** Both power and data cables are secured along the left and right vertical rails using exclusively **Velcro (Hook-and-Loop)** straps. This provides solid stability for the heavier power cables while protecting the sensitive Cat6a data lines from being crushed or damaged.
 
 ![Rear Switch Uplinks](images/cat6a-top-mgmt.png){ loading=lazy }
-*Fig 4: Switch uplinks utilizing overhead space for zero-tension service loops.*
+*Fig 5: Switch uplinks utilizing overhead space for zero-tension service loops.*
 
 #### Macro View: Fastening Separation
 The rear view shows how all cables are bundled and routed along the outer structural rails. Using Velcro universally allows for easy adjustments during maintenance, while keeping the center of the rack completely clear for the exhaust airflow of the HP nodes.
