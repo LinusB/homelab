@@ -46,7 +46,7 @@ tags:
 
 ## 2. Custom Hardware Modifications
 
-Integrating enterprise-grade architecture into a highly constrained 10-inch form factor requires deliberate physical adaptations. Custom 3D-printed brackets often lack the specific thermal tolerances required for high-density mounting.
+Custom 3D-printed brackets often lack the specific thermal tolerances required for high-density mounting.
 
 <div class="grid cards" markdown>
 
@@ -137,7 +137,7 @@ High-density compute environments suffer from passive heat compounding. When mul
 
 ---
 
-## 6. Enterprise Cable Routing Protocols
+## 6. Cable Routing Protocols
 
 Cable management is the physical manifestation of operational discipline. A chaotic rear rack drastically increases the Mean Time To Recovery (MTTR) during hardware failures or node replacements.
 

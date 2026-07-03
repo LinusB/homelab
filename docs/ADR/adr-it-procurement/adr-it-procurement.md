@@ -11,7 +11,17 @@ tags:
 ---
 # IT Procurement - Physical Infrastructure
 
-![Status](https://img.shields.io/badge/Status-Approved-green?style=for-the-badge)
+<!-- Wenn das ADR noch in Bearbeitung ist:
+![Proposed](https://img.shields.io/badge/Proposed-darkblue?style=for-the-badge) ![Accepted](https://img.shields.io/badge/Accepted-lightgrey?style=for-the-badge) ![Deprecated](https://img.shields.io/badge/Deprecated-lightgrey?style=for-the-badge) ![Superseded](https://img.shields.io/badge/Superseded-lightgrey?style=for-the-badge) -->
+
+<!-- Wenn die Entscheidung getroffen / aktiv ist (Dein Standard-Zustand für fertige ADRs): -->
+![Proposed](https://img.shields.io/badge/Proposed-lightgrey?style=for-the-badge) ![Accepted](https://img.shields.io/badge/Accepted-darkgreen?style=for-the-badge) ![Deprecated](https://img.shields.io/badge/Deprecated-lightgrey?style=for-the-badge) ![Superseded](https://img.shields.io/badge/Superseded-lightgrey?style=for-the-badge)
+
+<!-- Wenn du es irgendwann in der Zukunft durch ein neues Konzept ablöst:
+![Proposed](https://img.shields.io/badge/Proposed-lightgrey?style=for-the-badge) ![Accepted](https://img.shields.io/badge/Accepted-lightgrey?style=for-the-badge) ![Deprecated](https://img.shields.io/badge/Deprecated-lightgrey?style=for-the-badge) ![Superseded](https://img.shields.io/badge/Superseded-orange?style=for-the-badge)
+
+*Superseded by: [ADR-005: Migration to PoE+ Hardware](link-to-new-adr)* 
+-->
 
 | Attribute  | Details       |
 | :--------- | :------------ |

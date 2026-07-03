@@ -79,6 +79,7 @@ nav = [
   ] },
   { "Risk Acceptances" = [
     "risk-acceptances/index.md",
+    { "RK001: GaN Charger PD Renegotiation Drops" = "risk-acceptances/RK001-Control-Plane-SPOF.md" },
   ] },
 ]
 

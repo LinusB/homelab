@@ -42,3 +42,8 @@ body::after {
   /* Optional: Deckkraft anpassen, falls es noch einen Tick dezenter sein soll */
   opacity: 0.4;
 }
+/* Erzwingt Zeilenumbruch in Codeblöcken mit der Klasse .wrap */
+pre.wrap code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
