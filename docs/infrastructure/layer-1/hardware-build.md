@@ -13,12 +13,6 @@ tags:
 !!! abstract "Executive Summary"
     This document outlines the physical assembly, custom hardware modifications, and structural routing protocols implemented within my 10-inch "Project-Enterprise" Homelab. The objective of this phase was to transform standard consumer and 3D-printed components into a highly resilient, thermally optimized, and strictly compliant Layer 1 datacenter foundation.
 
-![Enterprise Homelab - Production Ready](images/homelab-overview.png){ loading=lazy }
-*Fig 1: The fully integrated 9U compute and network infrastructure operating under active load.*
-
-![Front Panel Topology](images/L2-Patchpanel.png){ loading=lazy }
-*Fig 2: Physical Front Panel Topology and Layer 1 Segmentation.*
-
 ---
 
 ## 1. Procurement & Component Audit

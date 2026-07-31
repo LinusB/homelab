@@ -50,11 +50,13 @@ nav = [
   ] },
   { "Architecture" = [
     "architecture/index.md",
-    # { "Hardware" = "architecture/hardware.md" },
+    { "Layer 1: Physical Topography" = "architecture/layer-1/physical-topography.md" },
+    { "Layer 2: Logical Fabric & Segmentation" = "architecture/layer-2/network-topology.md" },
+    { "Layer 3: IPAM & Routing Boundaries" = "architecture/layer-3/ipam.md" },
   ] },
   { "Infrastructure" = [
     "infrastructure/index.md",
-    { "Layer 1: Hardware Build" = "infrastructure/layer-1/hardware-build.md" },
+    { "Hardware Build" = "infrastructure/layer-1/hardware-build.md" },
     # { "Proxmox VE" = "infrastructure/pve.md" },
     # { "Secrets Management" = "infrastructure/secrets-management.md" },
   ] },
@@ -72,14 +74,17 @@ nav = [
   ] },
   { "ADRs" = [
     "ADR/index.md",
-    { "ADR: 001 - IT Procurement" = "ADR/adr-it-procurement/adr-it-procurement.md" },
+    { "ADR: 001 - IT Procurement" = "ADR/001/it-procurement.md" },
+    { "ADR-002: Edge Router IaC Toolchain" = "ADR/002/edge-router-iac-toolchain.md" },
+    { "ADR-003: Hypervisor L2 Fabric" = "ADR/003/hypervisor-l2-fabric.md" },
+    { "ADR-004: Control Plane Isolation" = "ADR/004/control-plane-isolation.md" },
   ] },
   { "Security Concept" = [
     "security/index.md",
   ] },
   { "Risk Acceptances" = [
     "risk-acceptances/index.md",
-    { "RK001: GaN Charger PD Renegotiation Drops" = "risk-acceptances/RK001-Control-Plane-SPOF.md" },
+    { "RK001: GaN Charger PD Renegotiation Drops" = "risk-acceptances/RK001/Control-Plane-SPOF.md" },
   ] },
 ]
 
