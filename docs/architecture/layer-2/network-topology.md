@@ -15,7 +15,7 @@
 ### 2. Virtual Hypervisor Switch (Proxmox)
 *   **Technology:** Native VLAN-aware Linux Bridge (`vmbr0`).
 *   **Rationale (OVS Deprecation):** Open vSwitch (OVS) and SPAN (Port Mirroring) were explicitly excluded from the design to maintain strict isolation for the Offensive Security Enclave (Kali VM - VLAN 40).
-*   **Defense-in-Depth:** Utilizing the native Linux Bridge allows the built-in Proxmox firewall to remain fully active on the Kali VM's virtual NIC, establishing a zero-trust boundary before traffic reaches the physical network.
+*   **Defense-in-Depth:** Utilizing the native Linux Bridge allows the built-in Proxmox firewall to remain fully active on the Kali VM's vNIC, establishing a zero-trust boundary before traffic reaches the physical network.
 
 ### 3. Edge Gateway (OpenWrt - GL-MT3000)
 *   **Technology:** Distributed Switch Architecture (DSA).

@@ -27,7 +27,7 @@ site_author = "Linus Bachert"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://linusb.github.io/homelab/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -45,14 +45,15 @@ Copyright &copy; 2026 Linus Bachert
 #
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "About" = [
-    "index.md",
-  ] },
+  # { "About" = [
+  #   "index.md",
+  # ] },
   { "Architecture" = [
     "architecture/index.md",
     { "Layer 1: Physical Topography" = "architecture/layer-1/physical-topography.md" },
     { "Layer 2: Logical Fabric & Segmentation" = "architecture/layer-2/network-topology.md" },
     { "Layer 3: IPAM & Routing Boundaries" = "architecture/layer-3/ipam.md" },
+    { "Automation: IaC Toolchain" = "architecture/automation/IaC-Toolchain.md" },
   ] },
   { "Infrastructure" = [
     "infrastructure/index.md",
@@ -75,9 +76,7 @@ nav = [
   { "ADRs" = [
     "ADR/index.md",
     { "ADR: 001 - IT Procurement" = "ADR/001/it-procurement.md" },
-    { "ADR-002: Edge Router IaC Toolchain" = "ADR/002/edge-router-iac-toolchain.md" },
-    { "ADR-003: Hypervisor L2 Fabric" = "ADR/003/hypervisor-l2-fabric.md" },
-    { "ADR-004: Control Plane Isolation" = "ADR/004/control-plane-isolation.md" },
+    { "ADR-002: API-Limited Switch Automation" = "ADR/002/API-Limitation-on-L2.md" },
   ] },
   { "Security Concept" = [
     "security/index.md",
@@ -85,6 +84,7 @@ nav = [
   { "Risk Acceptances" = [
     "risk-acceptances/index.md",
     { "RK001: GaN Charger PD Renegotiation Drops" = "risk-acceptances/RK001/Control-Plane-SPOF.md" },
+    { "RK002: Static L2 Trunking & Lack of Pruning" = "risk-acceptances/RK002/L2-Lack-of-Pruning.md" },
   ] },
 ]
 
@@ -402,7 +402,7 @@ pygments_lang_class = true
 [project.markdown_extensions.pymdownx.smartsymbols]
 [project.markdown_extensions.pymdownx.superfences]
 custom_fences = [
-  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
 ]
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true

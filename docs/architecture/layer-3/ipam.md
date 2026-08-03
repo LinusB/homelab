@@ -1,6 +1,6 @@
-# VLAN Topology and IP Address Management (IPAM)
+# Layer 3: IPAM & Routing Boundaries
 
-## IP Space
+## IP Address Management (IPAM)
 
 | Segment Name | VLAN ID | IPv4 CIDR Block | Physical/Logical Assignment | Primary Function & Routing Profile |
 | :--- | :--- | :--- | :--- | :--- |
@@ -11,6 +11,8 @@
 | **Offensive Security** | `40` | `10.10.40.0/24` | Kali Linux VM on Proxmox | Isolated pentesting environment. Default L3 drop policy to all networks, temporary access granted exclusively via IaC. |
 | **IoT / Sensors** | `50` | `10.10.50.0/24` | Zigbee/WLAN Gateways | Highly restrictive network for peripheral sensors. No internet access, ingress completely blocked. |
 
-## Rationale
-* Under the **BSI IT Baseline Protection Compendium** (IT-Grundschutz), requirement **APP.4.4.A7 (Separation of Kubernetes networks)** mandates that network traffic between management and workload components must be strictly isolated. Networks for node administration, the **control plane**, and individual **worker node** application services must be logically or physically separated.
-* Therefore, VLANs 20 and 21 are functionally separated, with their respective VLAN IDs directly mapped to the third octet of their IPv4 subnets for logical consistency.
+## Kubernetes Segmentation Standard
+
+*   **Compliance (BSI IT-Grundschutz):** In accordance with requirement **APP.4.4.A7**, network traffic between management components and workload nodes is strictly isolated.
+*   **Implementation:** The Control Plane (VLAN 20) and Worker Nodes (VLAN 21) operate in entirely separate broadcast domains. 
+*   **Addressing Scheme:** For logical consistency and simplified administration, all VLAN IDs map directly to the third octet of their respective IPv4 subnets.
