@@ -1,1 +1,0 @@
-### Edge Router IaC Toolchain: Ansible vs. Terraform
