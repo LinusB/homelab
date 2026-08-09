@@ -27,77 +27,73 @@ This high-level topology defines the strict operational boundaries between infra
 The following state diagram outlines the sequential execution phases required to bootstrap the environment from bare metal to a fully operational state.
 
 ```mermaid
-stateDiagram-v2
-    direction TB
-    [*] --> Phase1_Network
+graph TD
+    subgraph aws_cloud [AWS Cloud / Single Source of Truth]
+        aws_sm[(AWS Secrets Manager)]
+    end
 
-    state "Phase 1: Network (Layer 2 & Layer 3)" as Phase1_Network {
-        state fork_network <<fork>>
-        [*] --> fork_network
+    subgraph phase0 [Phase 0: Secret Zero]
+        p0_gen[Generate Passwords in RAM] --> p0_prov[Init OpenWrt VPN Gateway]
+        p0_prov --> p0_push[Push Keys to AWS]
+        p0_push -.->|Write| aws_sm
+    end
+
+    subgraph phase1 [Phase 1: Network]
+        p1_fetch[Fetch OpenWrt Keys] -.->|Read| aws_sm
+        p1_fetch --> p1_fork{Parallel Execution}
         
-        fork_network --> OpenWrt_Config_Ansible : Automated via SSH/API
-        fork_network --> Netgear_Config_Manual : Manual Out-of-Band Setup
+        p1_fork --> p1_openwrt[Ansible: OpenWrt Config via SSH/API]
+        p1_fork --> p1_netgear[Manual: Netgear Out-of-Band Setup]
+    end
+    phase0 ==>|Triggers| p1_fetch
+
+    subgraph phase2 [Phase 2: Proxmox Baseline]
+        p2_fetch[Fetch Node Credentials] -.->|Read| aws_sm
+        p2_fetch --> p2_config[Ansible: Host Config <br> Updates, NTP, VLAN-Bridge, ZFS Mirror]
+    end
+    p1_openwrt --> p2_fetch
+    p1_netgear --> p2_fetch
+
+    subgraph phase3 [Phase 3: Virtual Machines]
+        p3_fetch[Fetch API Tokens] -.->|Read| aws_sm
+        p3_fetch --> p3_prov[Terraform: Interface via PVE API <br> CPU, RAM, Disks]
+        p3_prov --> p3_net[Network Assignment: Attach to VLANs]
+    end
+    p2_config ==>|Triggers| p3_fetch
+
+    subgraph phase4 [Phase 4: Kubernetes OS]
+        p4_fetch[Fetch K8s Bootstrap Secrets] -.->|Read| aws_sm
+        p4_fetch --> p4_yaml[Terraform: Generate Talos Config YAML]
+        p4_yaml --> p4_api[Bootstrap Nodes via API]
+        p4_api --> p4_wait[Wait for etcd consensus / Quorum]
+        p4_wait --> p4_kubeconfig[Fetch Kubeconfig]
+    end
+    p3_net ==>|Triggers| p4_fetch
+
+    subgraph phase5 [Phase 5: Guest OS & Workloads]
+        p5_fork{Parallel Execution}
         
-        state join_network <<join>>
-        OpenWrt_Config_Ansible --> join_network
-        Netgear_Config_Manual --> join_network
-        join_network --> [*]
-    }
-
-    Phase1_Network --> Phase2_Proxmox
-
-    state "Phase 2: Proxmox Baseline (Ansible)" as Phase2_Proxmox {
-        [*] --> Host_Config : Updates, <br>NTP, <br>'VLAN-aware' Bridge, <br>ZFS Mirror
-        Host_Config --> [*]
-    }
-
-    Phase2_Proxmox --> Phase3_VMs
-
-    state "Phase 3: Virtual Machines (Terraform)" as Phase3_VMs {
-        [*] --> Provision_VMs : CPU, RAM, Disks
-        Provision_VMs --> Network_Assignment : Attach to VLAN Bridges
-        Network_Assignment --> [*]
-    }
-
-    Phase3_VMs --> Phase4_Talos
-
-    state "Phase 4: Kubernetes OS (Terraform)" as Phase4_Talos {
-        [*] --> Generate_Talos_Config : YAML generation
-        Generate_Talos_Config --> Bootstrap_Nodes : API deployment
-        Bootstrap_Nodes --> Await_Quorum : [Buffer] Wait for etcd consensus
-        Await_Quorum --> Fetch_Kubeconfig : Download to Admin
-        Fetch_Kubeconfig --> [*]
-    }
-
-    Phase4_Talos --> Phase5_Workloads
-
-    state "Phase 5: Guest OS & Workloads" as Phase5_Workloads {
-        state fork_workloads <<fork>>
-        [*] --> fork_workloads
+        %% Kubernetes Workload Route
+        p5_fork --> p5_wait_api[Wait for K8s API Readiness]
+        p5_wait_api --> p5_eso[FluxCD: Deploy ESO]
+        p5_eso -.->|Continuously Polls| aws_sm
+        p5_eso --> p5_sync[ESO: Inject Native K8s Secrets]
+        p5_sync --> p5_deploy[FluxCD: Deploy Longhorn, Traefik & Apps]
         
-        fork_workloads --> Non_K8s_VMs_Ansible
-        fork_workloads --> K8s_Workloads_Helm
-        
-        state "Standard VMs (Ansible)" as Non_K8s_VMs_Ansible {
-            [*] --> Wait_For_SSH : [Buffer] Wait for VM boot
-            Wait_For_SSH --> Config_Kali_VM : Install Security Tools
-            Wait_For_SSH --> Config_HomeAssistant_VM : Setup IoT
-            Config_Kali_VM --> [*]
-            Config_HomeAssistant_VM --> [*]
-        }
-        
-        state "Kubernetes (Terraform/Helm)" as K8s_Workloads_Helm {
-            [*] --> Wait_For_API : [Buffer] Wait for K8s Readiness
-            Wait_For_API --> Deploy_Longhorn : Stateful Storage
-            Deploy_Longhorn --> Deploy_Ingress : Traefik / Apps
-            Deploy_Ingress --> [*]
-        }
-        
-        state join_workloads <<join>>
-        Non_K8s_VMs_Ansible --> join_workloads
-        K8s_Workloads_Helm --> join_workloads
-        join_workloads --> [*]
-    }
+        %% Standard VM Route
+        p5_fork --> p5_ansible_fetch[Fetch VM Credentials]
+        p5_ansible_fetch -.->|Read| aws_sm
+        p5_ansible_fetch --> p5_wait_ssh[Wait for VM SSH]
+        p5_wait_ssh --> p5_vm_tools[Ansible: Config VMs <br> Kali & HomeAssistant]
+    end
+    p4_kubeconfig ==>|Triggers| p5_fork
 
-    Phase5_Workloads --> [*]
+    %% Styling
+    style aws_cloud fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase0 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase1 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase2 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase3 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase4 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
+    style phase5 fill:transparent,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
 ```
