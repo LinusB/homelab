@@ -61,24 +61,25 @@ nav = [
     # { "Proxmox VE" = "infrastructure/pve.md" },
     # { "Secrets Management" = "infrastructure/secrets-management.md" },
   ] },
-  { "Compute" = [
+  { "Compute (tbd)" = [
     "compute/index.md",
   ] },
-  { "Services" = [
+  { "Services (tbd)" = [
     "services/index.md",
   ] },
-  { "Operations" = [
+  { "Operations (tbd)" = [
     "operations/index.md",
   ] },
-  { "Runbooks" = [
+  { "Runbooks (tbd)" = [
     "runbook/index.md",
   ] },
   { "ADRs" = [
     "ADR/index.md",
-    { "ADR: 001 - IT Procurement" = "ADR/001/it-procurement.md" },
-    { "ADR-002: API-Limited Switch Automation" = "ADR/002/API-Limitation-on-L2.md" },
+    { "ADR-001: IT Procurement" = "ADR/001/it-procurement.md" },
+    { "ADR-002: Secrets Management Strategy" = "ADR/002/secrets-management-strategy.md" },
+    { "ADR-004: API-Limited Switch Automation" = "ADR/004/API-Limitation-on-L2.md" },
   ] },
-  { "Security Concept" = [
+  { "Security Concept (tbd)" = [
     "security/index.md",
   ] },
   { "Risk Acceptances" = [
@@ -410,4 +411,6 @@ combine_header_slug = true
 [project.markdown_extensions.pymdownx.tasklist]
 custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
+[project.markdown_extensions]
+zensical.extensions.glightbox = {}
 

@@ -1,11 +1,12 @@
 ---
+status: new
 tags:
   - Architecture
   - ADR
   - GitOps
   - Network Automation
 ---
-# ADR-002: Layer-2 Automation Strategy for API-Limited Network Hardware
+# ADR-004: Layer-2 Automation Strategy for API-Limited Network Hardware
 
 ![Proposed](https://img.shields.io/badge/Proposed-lightgrey?style=for-the-badge) ![Accepted](https://img.shields.io/badge/Accepted-darkgreen?style=for-the-badge) ![Deprecated](https://img.shields.io/badge/Deprecated-lightgrey?style=for-the-badge) ![Superseded](https://img.shields.io/badge/Superseded-lightgrey?style=for-the-badge)
 
