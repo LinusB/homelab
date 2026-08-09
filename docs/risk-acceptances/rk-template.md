@@ -5,6 +5,11 @@
 
 ---
 
+<!-- ![Risk](https://img.shields.io/badge/Risk-major-darkred?style=for-the-badge) -->
+<!-- ![Risk](https://img.shields.io/badge/Risk-increased-darkorange?style=for-the-badge) -->
+<!-- ![Risk](https://img.shields.io/badge/Risk-minor-lightyellow?style=for-the-badge) -->
+
+
 !!! info "1. General Information & Scope"
     * **Name:** Long Title of the Risk
     * **ID:** [Unique Identifier, e.g., RK001]

@@ -1,3 +1,8 @@
+---
+tags:
+
+---
+
 # Layer 3: IPAM & Routing Boundaries
 
 ## IP Address Management (IPAM)

@@ -1,3 +1,11 @@
+---
+status: new
+tags:
+  - Ansible
+  - Terraform
+  - FluxCD
+---
+
 # Automation: IaC Toolchain
 
 ## Infrastructure as Code Mapping
@@ -10,7 +18,7 @@ This high-level topology defines the strict operational boundaries between infra
 
 *   **Terraform (Provisioning):** Responsible for immutable infrastructure. It orchestrates the creation of Proxmox VMs (allocating compute, storage, and network bridges) and handles the Kubernetes OS bootstrapping (Talos Linux) across both virtual worker nodes and bare-metal control planes.
 *   **Ansible (Configuration):** Responsible for stateful OS and service management. It configures the OpenWrt Layer 3 routing (DSA), sets up the Proxmox hypervisor baseline, and manages the guest OS configuration for standalone, non-K8s VMs (e.g. Kali Linux, Home Assistant).
-*   **Hardware Exception:** The Netgear L2 switch lacks API manageability. As formally accepted in **[ADR-002](https://linusb.github.io/homelab/ADR/002/API-Limitation-on-L2/#adr-002-layer-2-automation-strategy-for-api-limited-network-hardware)**, it requires a manual, one-time "Day-Zero" setup to configure the static trunk and access ports.
+*   **Hardware Exception:** The Netgear L2 switch lacks API manageability. As formally accepted in **[ADR-004](https://linusb.github.io/homelab/ADR/004/API-Limitation-on-L2/#adr-004-layer-2-automation-strategy-for-api-limited-network-hardware)**, it requires a manual, one-time "Day-Zero" setup to configure the static trunk and access ports.
 
 ---
 

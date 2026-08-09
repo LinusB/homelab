@@ -1,8 +1,18 @@
+---
+status: new
+tags:
+
+---
+
 # RK002: Static L2 Trunking & Lack of Physical VLAN Pruning
 
 ![Draft](https://img.shields.io/badge/Draft-lightgrey?style=for-the-badge) ![Finalization](https://img.shields.io/badge/Finalization-lightgrey?style=for-the-badge) ![Monitor](https://img.shields.io/badge/Monitor-darkgreen?style=for-the-badge) ![Closed](https://img.shields.io/badge/Closed-lightgrey?style=for-the-badge)
 
 ---
+
+<!-- ![Risk](https://img.shields.io/badge/Risk-major-darkred?style=for-the-badge) -->
+<!-- ![Risk](https://img.shields.io/badge/Risk-increased-darkorange?style=for-the-badge) -->
+![Risk](https://img.shields.io/badge/Risk-minor-lightyellow?style=for-the-badge)
 
 !!! info "1. General Information & Scope"
     * **Name:** Violation of Layer 2 Least Privilege via Static All-VLAN Trunking

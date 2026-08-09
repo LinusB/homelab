@@ -4,6 +4,11 @@
 
 ---
 
+![Risk](https://img.shields.io/badge/Risk-major-darkred?style=for-the-badge)
+<!-- ![Risk](https://img.shields.io/badge/Risk-increased-darkorange?style=for-the-badge) -->
+<!-- ![Risk](https://img.shields.io/badge/Risk-minor-lightyellow?style=for-the-badge) -->
+
+
 !!! info "1. General Information & Scope"
     * **Name:** Power Delivery (PD) Renegotiation Drops causing Control Plane SPOF
     * **ID:** RK001
