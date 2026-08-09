@@ -47,3 +47,14 @@ pre.wrap code {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Macht den Cursor zur Lupe, wenn man über ein Mermaid-Diagramm fährt */
+.mermaid, .mermaid svg {
+  cursor: zoom-in !important;
+  transition: opacity 0.2s;
+}
+
+/* Leichter Hover-Effekt (optional), um zu zeigen, dass es interaktiv ist */
+.mermaid:hover {
+  opacity: 0.8;
+}
