@@ -84,7 +84,7 @@ document.body.addEventListener("click", function(e) {
         
         const isZoomed = this.classList.toggle('zoomed');
         if (isZoomed) {
-            this.style.width = '300vw'; // 3x so groß
+            this.style.width = '100vw'; 
             this.style.height = 'auto';
             this.style.cursor = 'zoom-out';
 
