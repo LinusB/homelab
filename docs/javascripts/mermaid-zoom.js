@@ -7,24 +7,19 @@ if (!window.shadowHookHooked) {
     window.shadowHookHooked = true;
 }
 
-
 function closeMermaidOverlay() {
     const overlay = document.getElementById('custom-mermaid-overlay');
     if (overlay) overlay.remove();
     document.body.style.overflow = ''; 
 }
 
-
 if (typeof document$ !== "undefined") {
     document$.subscribe(closeMermaidOverlay);
 }
 
-
 document.body.addEventListener("click", function(e) {
     
-
     if (e.target.closest('.glightbox')) return;
-
 
     if (e.target.id === 'custom-mermaid-overlay' || e.target.classList.contains('mermaid-close-btn')) {
         closeMermaidOverlay();
@@ -42,28 +37,41 @@ document.body.addEventListener("click", function(e) {
 
     if (document.getElementById('custom-mermaid-overlay')) return;
 
+    // --- THEME DETECTION ---
+    let isDarkMode = false;
+    const colorScheme = document.body.getAttribute('data-md-color-scheme');
+    if (colorScheme === 'slate') {
+        isDarkMode = true;
+    } else if (colorScheme === 'default') {
+        isDarkMode = false;
+    } else {
+        isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    const bgColor = isDarkMode ? 'rgba(15, 17, 21, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+    const closeBtnColor = isDarkMode ? 'white' : '#1a1a1a';
+    // -----------------------
 
     const svgClone = svg.cloneNode(true);
     svgClone.removeAttribute('width');
     svgClone.removeAttribute('height');
 
-
     const overlay = document.createElement('div');
     overlay.id = 'custom-mermaid-overlay';
     
-
     overlay.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(15, 17, 21, 0.95);
+        background: ${bgColor};
         z-index: 999999;
         overflow: auto;
         display: flex;
         align-items: center;
         justify-content: center;
+        backdrop-filter: blur(2px); /* Gibt dem Hintergrund eine schöne Tiefe */
     `;
 
 
@@ -77,7 +85,6 @@ document.body.addEventListener("click", function(e) {
         display: block;
         margin: auto;
     `;
-
 
     svgClone.addEventListener('click', function(evt) {
         evt.stopPropagation(); 
@@ -94,7 +101,7 @@ document.body.addEventListener("click", function(e) {
             this.style.width = '95vw';
             this.style.height = '95vh';
             this.style.cursor = 'zoom-in';
-            // Wieder mittig zentrieren
+
             overlay.style.alignItems = 'center';
             overlay.style.justifyContent = 'center';
         }
@@ -108,7 +115,7 @@ document.body.addEventListener("click", function(e) {
         position: fixed;
         top: 25px;
         right: 35px;
-        color: white;
+        color: ${closeBtnColor};
         font-size: 30px;
         font-family: sans-serif;
         cursor: pointer;
@@ -118,9 +125,11 @@ document.body.addEventListener("click", function(e) {
     closeBtn.onmouseover = () => closeBtn.style.opacity = '1';
     closeBtn.onmouseout = () => closeBtn.style.opacity = '0.7';
 
+
     overlay.appendChild(closeBtn);
     overlay.appendChild(svgClone);
     document.body.appendChild(overlay);
     
+
     document.body.style.overflow = 'hidden'; 
 });
