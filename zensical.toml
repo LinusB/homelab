@@ -291,6 +291,7 @@ features = [
   # always rendered as part of the navigation sidebar on the left.
   # https://zensical.org/docs/setup/navigation/#navigation-integration
   #"toc.integrate",
+  "content.action.copy",
 ]
 
 # ----------------------------------------------------------------------------
@@ -403,7 +404,7 @@ pygments_lang_class = true
 [project.markdown_extensions.pymdownx.smartsymbols]
 [project.markdown_extensions.pymdownx.superfences]
 custom_fences = [
-  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
@@ -413,4 +414,5 @@ custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
 [project.markdown_extensions]
 zensical.extensions.glightbox = {}
-
+[project.plugins.llmstxt]
+sections = { Documentation = ["*.md", "**/*.md"] }
