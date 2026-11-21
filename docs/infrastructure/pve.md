@@ -1,6 +1,3 @@
----
----
-
 # Proxmox VE: Converged Hosting & System Architecture
 
 This document outlines the technical feasibility, architectural design, and
